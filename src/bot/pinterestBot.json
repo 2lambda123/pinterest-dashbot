@@ -2,13 +2,20 @@
   "board": {
     "scrolls": 5,
     "follow": 5,
+    "unfollow": 10,
+    "scrolls": 5,
+    "follow": 5,
     "unfollow": 10
   },
   "pin": {
     "scrolls": 5,
+    "save": 5,
+    "scrolls": 5,
     "save": 5
   },
   "user": {
+    "follow": 4,
+    "unfollow": 10,
     "follow": 4,
     "unfollow": 10
   },

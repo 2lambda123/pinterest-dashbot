@@ -19,7 +19,7 @@ $ chmod u+x installdeps.sh
 $ ./installdeps.sh
 ```
 
-- The script is using my `ACCESS_TOKEN`, to use it with your account you have to generate a token from [here](https://developers.pinterest.com/tools/access_token/) just make sure you give it all `4` scopes.
+- The script is using my `ACCESS_TOKEN`, to use it with your account you have to generate a token from [here](https://developers.pinterest.com/tools/access_token/) just make sure you give it all `4` scopes. In case of any GitHub Actions run failures, check the `src/bot/error_logs.txt` file for error logs.
 - The script containing the `ACCESS_TOKEN` is `/src/bot/core.py`
 - after updating the token with your token
 - you can run the scripts by using `python3 <script_name>` or `python <script_name>`, (needs python3)
@@ -27,7 +27,7 @@ $ ./installdeps.sh
 	- create_post_from_provided.py
 	- follow_users_boards.py
 	- unfollow_users_boards.py
-- these three scripts need to run as required. running them periodically can done using cronjobs, celery other alternatives, will be using cronjobs for now(discussed later).
+- these three scripts need to run as required. running them periodically can be done using cronjobs. It is recommended to check the `src/bot/error_logs.txt` file in case of any GitHub Actions run failures.
 - these three scripts use data from `src/bot/pintrestBot.json` where all configuration is stored.
 
 Here is a sample of a `pinterestBot.json` file
@@ -71,7 +71,7 @@ there is another file in the `/src/bot/` directory called `done_pins.json`, it c
 takes in `posts` from `pinterestBot.json` checks with if the imageUrl is in `done_pins.json`
 if not then uploads the pin with the given `note`.
 - `python3 create_post_from_provided.py`
-- okay if ran twice a day with `periods.posts_to_post_per_day` less than 4 (just a guess)
+- okay if ran twice a day with `python3 create_post_from_provided.py`
 
 ### follow_users_boards.py
 searches pinterest once for each term in the `search_terms` array in `pinterestBot.json` then
@@ -93,7 +93,7 @@ gets all the following boards and users, then unfollows them based on `board.unf
 use `crontab -e` and put these lines in the bottom, just change the path to where you have kept the script
 you can change the timings too,
 
-- `create_post_from_provided` runs at 2:30am and 3:30pm everyday.
+- `create_post_from_provided.py <example_argument>` runs at 2:30am and 3:30pm everyday.
 - `follow_users_boards` runs at 5:25am and 5:25pm everyday.
 - `unfollow_users_boards` runs at 1:30am every week on sundays.
 
@@ -151,7 +151,7 @@ The git subtree command puts the `src/bot` directory as the root directory for y
 now to run the scripts you can simply do
 
 ```
-heroku run python create_post_from_provided.py
+heroku run python create_post_from_provided.py <example_argument>
 heroku run python follow_users_boards.py
 heroku run python unfollow_users_boards.py
 ```

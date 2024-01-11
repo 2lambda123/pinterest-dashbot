@@ -1,0 +1,6 @@
+import os
+
+def write_error_logs(error_logs):
+    file_path = os.path.join("src", "bot", "error_logs.txt")
+    with open(file_path, "w") as error_logs_file:
+        error_logs_file.write(error_logs)
