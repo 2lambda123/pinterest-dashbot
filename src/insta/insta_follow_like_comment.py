@@ -25,6 +25,7 @@ InstaPy(username="geekodour",password="strongpassword",nogui=True)\
   .like_by_tags(search_terms, amount=2) \
   .end()
 # Add error handling and logging
+import logging
 try:
     insta_utils = InstaUtils(username="geekodour", password="strongpassword", nogui=True)
     insta_utils.login()
