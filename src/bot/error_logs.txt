@@ -1,4 +1,13 @@
 import os
+import logging
+import logging
+import logging
+import logging
+import logging
+import logging
+import logging
+import logging
+import logging
 
 def write_error_logs(error_logs):
     file_path = os.path.join("src", "bot", "error_logs.txt")
