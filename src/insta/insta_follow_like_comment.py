@@ -24,3 +24,15 @@ InstaPy(username="geekodour",password="strongpassword",nogui=True)\
   .set_ignore_if_contains(ignore_words) \
   .like_by_tags(search_terms, amount=2) \
   .end()
+# Add error handling and logging
+try:
+    insta_utils = InstaUtils(username="geekodour", password="strongpassword", nogui=True)
+    insta_utils.login()
+    insta_utils.set_do_follow(enabled=True, percentage=100, times=2)
+    insta_utils.set_do_comment(True, percentage=100)
+    insta_utils.set_comments(comments_pool)
+    insta_utils.set_ignore_if_contains(ignore_words)
+    insta_utils.like_by_tags(search_terms, amount=2)
+    insta_utils.end()
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
